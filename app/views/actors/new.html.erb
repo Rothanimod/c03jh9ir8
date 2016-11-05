@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <h1>New Actor</h1>
+      <%= form_for(@actor) do |actor| %>
+        <% if @actor.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@actor.errors.count, "error")%> prohibited this @actor from being saved: </h2>
+            <ul>
+              <% @actor.errors.full_messages.each do |message| %>
+                <li><%= message%> </li>
+              <%end%>
+            </ul>
+          </div>
+        <%end%>
+
+
+
+      <div class="form-group">
+        <div class="field">
+          <%= actor.label :name %>
+          <%= actor.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= actor.label :bio %>
+          <%= actor.text_area :bio, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= actor.label :birth_date %>
+          <%= actor.date_field :birth_date, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= actor.label :birth_place %>
+          <%= actor.text_field :birth_place, class: 'form-control'  %>
+        </div>
+        <div class="field">
+          <%= actor.label :image_url %>
+          <%= actor.text_field :image_url, class: 'form-control'  %>
+        </div>
+        <div class="field">
+          <%= actor.label :alive %>
+          <%= actor.text_field :alive, class: 'form-control'  %>
+          <div class="field">
+            <%= actor.label :death_date %>
+            <%= actor.date_field :death_date, class: 'form-control' %>
+          </div>
+          <div class="field">
+            <%= actor.label :death_place %>
+            <%= actor.text_field :death_place, class: 'form-control'  %>
+          </div>
+        <div class="actions">
+          <%= link_to 'Cancel', actors_path,  class: 'btn btn-danger'%>
+          <%= actor.submit 'Save Actor', class: 'btn btn-success'%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
